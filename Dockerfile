@@ -1,6 +1,6 @@
 FROM node:18
 
-WORKDIR /appoinment-system
+WORKDIR /react-vite-veterinaria
 # COPY package.json .
 # RUN npm install
 

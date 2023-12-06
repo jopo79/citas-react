@@ -8,6 +8,6 @@ services:
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     volumes:
-      - .:/appoinment-system
-    command: sh -c "cd appoinment-system && npm install && npm run dev"
+      - .:/react-vite-veterinaria
+    command: sh -c "cd citas-react && npm install && npm run dev"
     #command: sh -c "tail -F something"
