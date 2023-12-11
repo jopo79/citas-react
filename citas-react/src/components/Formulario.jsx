@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Error from "./Error";
 
-const Formulario = ({ pacientes, setPacientes }) => {
+const Formulario = ({ pacientes, setPacientes, paciente }) => {
   const [nombre, setNombre] = useState("");
   const [propietario, setPropietario] = useState("");
   const [email, setEmail] = useState("");
@@ -9,12 +9,21 @@ const Formulario = ({ pacientes, setPacientes }) => {
   const [sintomas, setSintomas] = useState("");
   const [error, setError] = useState(false);
 
+  useEffect(() => {
+    if (Object.keys(paciente).length > 0) {
+      setNombre(paciente.nombre);
+      setEmail(paciente.email);
+      setPropietario(paciente.propietario);
+      setFecha(paciente.fecha);
+      setSintomas(paciente.sintomas);
+    }
+  }, [paciente]);
 
-  const generateId = () =>{
-    const random = Math.random().toString(36).substring(2)
-    const fecha  = Date.now().toString(36)
-    return fecha+random
-  }
+  const generateId = () => {
+    const random = Math.random().toString(36).substring(2);
+    const fecha = Date.now().toString(36);
+    return fecha + random;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     //validacion del formulario
@@ -31,7 +40,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
       email,
       fecha,
       sintomas,
-      id: generateId()
+      id: generateId(),
     };
     setPacientes([...pacientes, objetoPaciente]);
 
@@ -137,7 +146,8 @@ const Formulario = ({ pacientes, setPacientes }) => {
         </div>
         <input
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all rounded-md"
-          type="Submit"
+          type="submit"
+          value={paciente.id ? "Editar paciente" : "Agregar paciente"}
         ></input>
       </form>
     </div>
