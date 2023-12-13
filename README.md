@@ -1,4 +1,4 @@
-# Appoint mangement with React and Vite
+# Appointment mangement with React and Vite
 
 Project to management a appointment of a clinic made orquestate with vite and made on React
 ## Getting Started
